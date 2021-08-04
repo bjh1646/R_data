@@ -108,3 +108,7 @@ exam %>% filter(class==1) %>% select(english)
 exam %>% 
   filter(class==1) %>% 
   select(english)
+
+exam %>% 
+  filter(class==1) %>% 
+  head
