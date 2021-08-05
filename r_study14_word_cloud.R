@@ -46,8 +46,6 @@ df_word = rename(df_word,
 
 # 8. 두글자 이상 단어 추출
 df_word = filter(df_word, nchar(word) >= 2)
-df_word
-
 
 
 # 빈도순으로 정렬 후 상위 20개 (확인용)
