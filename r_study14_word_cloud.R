@@ -22,9 +22,10 @@ head(txt)
 # 2. 특수문자 제거용 환경설정
 install.packages("stringr")
 library(stringr)
+library(KoNLP)
 
 # 3. 특수문자 제거
-txt = str_replace_all(txt, "\\w", " ")
+txt = str_replace_all(txt, "\\W", " ")
 
 # 4. 명사 추출
 nouns = extractNoun(txt)
@@ -78,5 +79,21 @@ wordcloud(words = df_word$word,    #단어
 
 
 
+
+# 10. 색상 지정
+pal = brewer.pal(9, "Blues")
+
+# 11. 난수 고정
+set.seed(1234)
+
+# 12.워드 클라우드 만들기
+wordcloud(words = df_word$word,    #단어
+          freq = df_word$freq,     #빈도
+          min.freq = 2,            #최소 단어 빈도
+          max.words = 200,         #표현 단어 수
+          random.order = F,        #고빈도 단어 중앙에 배치
+          rot.per = .1,            #회전 단어 비율
+          scale = c(4, 0.3),       #단어 크기 범위
+          colors = pal)            #색상목록
 
 
