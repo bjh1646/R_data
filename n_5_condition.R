@@ -77,3 +77,26 @@ if("A" %in% i_text) {
 } else {
   print("False A")
 }
+
+
+if("E" %in% i_text) {
+  print("True E")
+} else if ("B" %in% i_text) {
+  print("True B")
+} else {
+  print("False")
+}
+
+
+# 합/교집합 조건문 생성
+# 합집합 |
+# 교집합 &
+
+english = c("A","B","C")
+math = c("C","B","A")
+
+grade_a1 = ifelse(english == "A" | math == "A", "A", "Else")
+grade_a1
+
+grade_a2 = ifelse(english == "B" | math == "B", "B", "Else")
+grade_a2
