@@ -161,8 +161,40 @@ pnorm(q = 0.1, mean = 0, sd = 1)
 #정확히 0.5가 계산됨.
 pnorm(q = 0, mean = 0, sd = 1)
 
+#분위수
+#평균0, 표준편차1, 누적확률0.1
+qnorm(p = 0.1, mean = 0, sd = 1)
+
+qnorm(p = 0.5, mean = 0, sd = 1)
+
+#중고차 가격 분포 확인을 위한 데이터 분포 탐색
+summary(Audi$price)  #최고와 최저 차이
+
+#시각화하면 엄청나게 극단적인 값이라는 것을 알 수 있음
+library(ggplot2)
+ggplot(Audi) +
+  geom_histogram(aes(x=price), binwidth = 1000) +
+  theme_bw()
+
+#왜도 : 분포의 비대칭성 정도
+#왼쪽으로 긴 꼬리를 가지게 할 경우 왜도는 음수를 가짐
+#R에서는 fBasics패키지의 skewness()를 활용함
+install.packages("fBasics")
+library(fBasics)
+skewness(Audi$price)
 
 
+#첨도 : 뾰족한 정도
+#kurtosis()를 활용
+kurtosis(Audi$price)
+#--로그활용
+#로그 함수는 오른쪽으로 극단적인 값을 가지는 분포를 변환할 때
+ggplot(Audi) +
+  geom_point(aes(x=price, y=log(price))) +
+  theme_bw()
 
-
+#로그 + 히스토그램
+ggplot(Audi) +
+  geom_histogram(aes(x=log(price)), binwidth = 0.1) +
+  theme_bw()
 
